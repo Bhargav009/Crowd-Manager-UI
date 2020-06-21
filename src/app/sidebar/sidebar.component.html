@@ -1,0 +1,22 @@
+
+<div class="sidebar-wrapper">
+  <div class="logo">
+    <a [routerLink]="['/dashboard']" [queryParams]="{ 'id': defPageId}" class="simple-text logo-mini">
+      <div class="logo-image-small">
+        <img src="assets/img/angular2-logo.png">
+      </div>
+    </a>
+    <a [routerLink]="['/dashboard']" [queryParams]="{ 'id': defPageId}" class="simple-text logo-normal">
+      ACS
+    </a>
+  </div>
+  <input type="text" value="" placeholder="Search..." class="form-control" [(ngModel)]="searchElement">
+    <ul class="nav">
+        <li *ngFor="let menuItem of menuItems | searchItem:searchElement" routerLinkActive="active" class="{{menuItem.class}}" (click)="loadPage()">
+            <a [routerLink]="[menuItem.path]" [queryParams]="{ 'id': menuItem.pageid}">
+                <i class="nc-icon {{menuItem.icon}}"></i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul>
+</div>
